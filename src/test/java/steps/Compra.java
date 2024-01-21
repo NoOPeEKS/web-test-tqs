@@ -138,7 +138,6 @@ public class Compra {
     driver.quit();
   }
 
-  //CrearCuentaDespuesDeCompra
   @Then("compra realizada correctamente")
   public void compraRealizadaCorrectamente() throws InterruptedException {
     Thread.sleep(3500);
@@ -169,8 +168,6 @@ public class Compra {
     driver.quit();
   }
 
-
-  //CompraConEmailErroneo
   @And("usuario llena formulario email erroneo")
   public void usuarioLlenaFormularioEmailErroneo() throws InterruptedException {
     //Email
@@ -229,7 +226,6 @@ public class Compra {
     driver.quit();
   }
 
-  //CompraConCodigoPostalErroneo
   @And("usuario llena formulario codigo postal erroneo")
   public void usuarioLlenaFormularioCodigoPostalErroneo() throws InterruptedException {
     //Email
@@ -290,89 +286,4 @@ public class Compra {
         "If you believe it is the right one you can ignore this notice.");
     driver.quit();
   }
-
-
-  //Compra normal con cuenta
-  @Given("el usuario inicia sesion")
-  public void elUsuarioIniciaSesion() {
-    System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
-    driver = new ChromeDriver();
-    driver.navigate().to("https://magento.softwaretestingboard.com/");
-    driver.findElement(By.className("authorization-link")).click();
-    driver.findElement(By.id("email")).sendKeys(usuario);
-    driver.findElement(By.id("pass")).sendKeys(passwd);
-    driver.findElement(By.id("send2")).click();
-  }
-
-  @When("el usuario hace click en men, tops, climate y cold")
-  public void elUsuarioHaceClickEnMenTopsClimateYCold() throws InterruptedException {
-    Thread.sleep(2000);
-    driver.navigate().to("https://magento.softwaretestingboard.com/");
-    driver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div[2]/nav/ul/li[3]/a")).click();
-    //tops
-    driver.findElement(By.xpath("/html/body/div[2]/main/div[4]/div[2]/div[1]/div[2]/dl/" +
-        "dd/ol/li[1]/a")).click();
-    //climate
-    driver.findElement(By.xpath("/html/body/div[2]/main/div[3]/div[2]/div/div[2]/div/" +
-        "div[13]/div[1]")).click();
-    //cold
-    driver.findElement(By.xpath("/html/body/div[2]/main/div[3]/div[2]/div/div[2]/div/" +
-        "div[13]/div[2]/ol/li[2]/a")).click();
-  }
-
-  @And("el usuario hace click en el primer producto de esta categoria")
-  public void elUsuarioHaceClickEnElPrimerProductoDeEstaCategoria() throws InterruptedException {
-    Thread.sleep(2000);
-    driver.findElement(By.xpath("/html/body/div[2]/main/div[3]/div[1]/div[3]/ol/li[1]/div/a")).click();
-  }
-
-  @And("patata")
-  public void patata() throws InterruptedException {
-    Thread.sleep(2000);
-    //Company
-    driver.findElement(By.xpath("/html/body/div[2]/main/div[2]/div/div[3]/div[4]/"
-            + "ol/li[1]/div[2]/form/div/div[3]/div/input")).sendKeys("Company S.A");
-
-    Thread.sleep(100);
-    //Street Adress
-    driver.findElement(By.xpath("/html/body/div[2]/main/div[2]/div/div[3]/div[4]/"
-            + "ol/li[1]/div[2]/form/div/fieldset/div/div[1]/div/input")).sendKeys("Calle Maria n9, 8 A");
-    Thread.sleep(100);
-    //City
-    driver.findElement(By.xpath("/html/body/div[2]/main/div[2]/div/div[3]/div[4]/"
-            + "ol/li[1]/div[2]/form/div/div[4]/div/input")).sendKeys("City");
-    Thread.sleep(100);
-    //State/Province
-    driver.findElement(By.xpath("/html/body/div[2]/main/div[2]/div/div[3]/div[4]/"
-            + "ol/li[1]/div[2]/form/div/div[5]/div/select")).click();
-    Thread.sleep(100);
-    driver.findElement(By.xpath("/html/body/div[2]/main/div[2]/div/div[3]/div[4]/"
-            + "ol/li[1]/div[2]/form/div/div[5]/div/select/option[3]")).click();
-    Thread.sleep(100);
-    //Postal Code
-    driver.findElement(By.xpath("/html/body/div[2]/main/div[2]/div/div[3]/div[4]/"
-            + "ol/li[1]/div[2]/form/div/div[7]/div/input")).sendKeys("00000");
-    Thread.sleep(100);
-    //Phone number
-    driver.findElement(By.xpath("/html/body/div[2]/main/div[2]/div/div[3]/div[4]/"
-            + "ol/li[1]/div[2]/form/div/div[9]/div/input")).sendKeys("000000000");
-    Thread.sleep(100);
-    //Shipping Method
-    driver.findElement(By.xpath("/html/body/div[2]/main/div[2]/div/div[3]/div[4]/"
-            + "ol/li[2]/div/div[3]/form/div[1]/table/tbody/tr[1]/td[1]/input")).click();
-    Thread.sleep(100);
-    //button
-    driver.findElement(By.xpath("/html/body/div[2]/main/div[2]/div/div[3]/div[4]/"
-            + "ol/li[2]/div/div[3]/form/div[3]/div/button")).click();
-  }
-
-  @And("el usuario selecciona el Shipping Method")
-  public void elUsuarioSeleccionaElShippingMethod() throws InterruptedException {
-    Thread.sleep(1500);
-    driver.findElement(By.xpath("/html/body/div[2]/main/div[2]/div/div[2]/div[4]/ol/li[2]/div/div[3]/" +
-        "form/div[1]/table/tbody/tr[1]/td[1]/input")).click();
-    driver.findElement(By.xpath("/html/body/div[2]/main/div[2]/div/div[2]/div[4]/ol/li[2]/div/" +
-        "div[3]/form/div[3]/div/button")).click();
-  }
-
 }
