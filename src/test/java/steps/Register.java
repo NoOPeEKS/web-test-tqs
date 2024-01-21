@@ -19,7 +19,6 @@ public class Register {
 
     WebDriver driver;
 
-    //Sin Errores
     @Given("usuario en portada")
     public void usuarioEnPortada(){
         System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
@@ -59,7 +58,6 @@ public class Register {
     }
 
 
-    //Error email existente
     @When("usuario llena formulario email repetido")
     public void usuarioLlenaFormularioMailRepetido(){
         driver.findElement(By.id("firstname")).sendKeys("ABC");
@@ -77,7 +75,6 @@ public class Register {
         driver.quit();
     }
 
-    //Error password
     @When("^usuario añade (.*)")
     public void usuarioAñadePasswd(String passwd){
         driver.findElement(By.id("password")).sendKeys(passwd);
@@ -102,7 +99,6 @@ public class Register {
 
 
 
-    //Strength password
     @When("usuario llena formulario sin passwd")
     public void usuarioLlenaFormularioSinPasswd()
     {

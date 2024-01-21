@@ -16,7 +16,6 @@ public class Sesion {
   String contrasenya = "A12345678.";
 
 
-  //Iniciar Sesion
   @Given("usuario en portada principal")
   public void usuarioEnPortadaPrincipal() {
     System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
@@ -47,7 +46,6 @@ public class Sesion {
     Assert.assertTrue(url.contains("https://magento.softwaretestingboard.com/"));
   }
 
-  //Cerrar Sesion
   @When("usuario clica sign out")
   public void usuarioClicaSignOut() {
     driver.findElement(By.className("customer-welcome")).click();
