@@ -75,7 +75,7 @@ public class Register {
         driver.quit();
     }
 
-    @When("^usuario añade (.*)")
+    @When("^usuario añade passwd(.*)")
     public void usuarioAñadePasswd(String passwd){
         driver.findElement(By.id("password")).sendKeys(passwd);
     }

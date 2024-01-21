@@ -12,7 +12,7 @@ Feature: Register
 
     Given usuario en portada
     When usuario click Create an Account
-    And usuario añade <passwd>
+    And usuario añade passwd <passwd>
     Then mensaje error <error>
 
     Examples:
@@ -26,7 +26,7 @@ Feature: Register
     Given usuario en portada
     When usuario click Create an Account
     And usuario llena formulario sin passwd
-    And usuario añade <passwd>
+    And usuario añade passwd <passwd>
     And usuario confirma <passwdConf>
     And usuario click boton create an account
     Then mostrar mensaje <error>
