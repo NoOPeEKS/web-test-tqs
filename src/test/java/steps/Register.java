@@ -20,20 +20,20 @@ public class Register {
     WebDriver driver;
 
     //Sin Errores
-    @Given("el usuario esta en la portada")
+    @Given("usuario en portada")
     public void usuarioEnPortada(){
         System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.navigate().to("https://magento.softwaretestingboard.com/");
     }
 
-    @When("el usuario hace click en Create an Account")
+    @When("usuario click Create an Account")
     public void usuarioClickCreateAccount(){
         driver.findElement(By.partialLinkText("Create an Account")).click();
     }
 
-    @When("el usuario rellena la informacion con un email nuevo")
-    public void usuarioRellenaInfoMailNuevo(){
+    @When("usuario llena formulario email nuevo")
+    public void usuarioLlenaFormularioMailNuevo(){
         driver.findElement(By.id("firstname")).sendKeys("ABC");
         driver.findElement(By.id("lastname")).sendKeys("DEF");
         double num = Math.random()*(max-min+1)+min;
@@ -44,13 +44,13 @@ public class Register {
         driver.findElement(By.id("password-confirmation")).sendKeys("A12345678.");
     }
 
-    @When("el usuario le da click al boton de Create an Account")
-    public void usuarioClickCrearCuenta(){
+    @When("usuario click boton create an account")
+    public void usuarioClickBotonCreateAccount(){
         driver.findElement(By.className("primary")).click();
     }
 
-    @Then("aparece la pagina de My Account")
-    public void finalizarRegistroSinErrores(){
+    @Then("usuario redirigido My Account")
+    public void usuarioRedirigidoMyAccount(){
         List<WebElement> elements = driver.findElement(By.className("page-title")).findElements(By.tagName("span"));
         String title = elements.get(0).getText();
         System.out.println();
@@ -60,8 +60,8 @@ public class Register {
 
 
     //Error email existente
-    @When("el usuario rellena la informacion con un email repetido")
-    public void usuarioRellenaInfoMailDuplicado(){
+    @When("usuario llena formulario email repetido")
+    public void usuarioLlenaFormularioMailRepetido(){
         driver.findElement(By.id("firstname")).sendKeys("ABC");
         driver.findElement(By.id("lastname")).sendKeys("DEF");
         driver.findElement(By.id("email_address")).sendKeys("prueba@email.com");
@@ -69,8 +69,8 @@ public class Register {
         driver.findElement(By.id("password-confirmation")).sendKeys("A12345678.");
     }
 
-    @Then("aparece error de mail existente en la pagina de Registro")
-    public void finalizarRegistroMailDuplicado(){
+    @Then("error mail existente")
+    public void errorMailExistente(){
         String title = driver.getCurrentUrl();
         System.out.println();
         Assert.assertTrue(title.contains("https://magento.softwaretestingboard.com/customer/account/create/"));
@@ -78,12 +78,12 @@ public class Register {
     }
 
     //Error password
-    @When("^el usuario añade una (.*)")
+    @When("^usuario añade (.*)")
     public void usuarioAñadePasswd(String passwd){
         driver.findElement(By.id("password")).sendKeys(passwd);
     }
 
-    @Then("^aparece el mensaje de error (.*)")
+    @Then("^mensaje error (.*)")
     public void apareceMensajeError(String error)
     {
         List<WebElement> elements = driver.findElements(By.id("password-error"));
@@ -103,8 +103,8 @@ public class Register {
 
 
     //Strength password
-    @When("el usuario rellena la informacion sin la passwd")
-    public void usuarioRellenaInfoSinPasswd()
+    @When("usuario llena formulario sin passwd")
+    public void usuarioLlenaFormularioSinPasswd()
     {
         driver.findElement(By.id("firstname")).sendKeys("ABC");
         driver.findElement(By.id("lastname")).sendKeys("DEF");
@@ -115,15 +115,15 @@ public class Register {
     }
 
 
-    @When("^el usuario confirma su (.*)")
-    public void usuarioConfirmaSuPasswd(String passwdConfirm)
+    @When("^usuario confirma (.*)")
+    public void usuarioConfirmaPasswd(String passwdConfirm)
     {
         driver.findElement(By.id("password-confirmation")).sendKeys(passwdConfirm);
     }
 
 
-    @Then("^se muestra el mensaje de (.*)")
-    public void seMuestraElMensajeDeError(String error)
+    @Then("^mostrar mensaje (.*)")
+    public void mostrarMensajeError(String error)
     {
 
         if(Objects.equals(error, "no"))

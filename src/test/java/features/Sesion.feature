@@ -2,12 +2,12 @@ Feature: Sesion
 
   Scenario: Iniciar Sesion y Cerrar Sesion
 
-    Given el usuario esta en la portada principal
-    When el usuario hace click en Sign in
-    And el usuario rellena la informacion del inicio de sesion
-    And el usuario le da click al boton de Sign In
-    Then el usuario es redirigido a la portada
-    When el usuario hace click en su nombre y en Sign Out
-    Then el usuario cierra la sesion
-    When pasan cinco segundos
-    Then el usuario es redirigido a la portada otra vez
+    Given usuario en portada principal
+    When usuario hace sign in
+    And usuario llena formulario sign in
+    And usuario clica boton sign in
+    Then usuario redirigido portada
+    When usuario clica sign out
+    Then usuario cierra sesion
+    When espera cinco segundos
+    Then usuario redirigido portada again

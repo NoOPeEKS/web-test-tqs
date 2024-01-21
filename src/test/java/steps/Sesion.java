@@ -17,57 +17,57 @@ public class Sesion {
 
 
   //Iniciar Sesion
-  @Given("el usuario esta en la portada principal")
-  public void elUsuarioEstaEnLaPortadaPrincipal() {
+  @Given("usuario en portada principal")
+  public void usuarioEnPortadaPrincipal() {
     System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
     driver = new ChromeDriver();
     driver.navigate().to("https://magento.softwaretestingboard.com/");
   }
 
-  @When("el usuario hace click en Sign in")
-  public void elUsuarioHaceClickEnSignIn() {
+  @When("usuario hace sign in")
+  public void usuarioHaceSignIn() {
     driver.findElement(By.className("authorization-link")).click();
   }
 
-  @And("el usuario rellena la informacion del inicio de sesion")
-  public void elUsuarioRellenaLaInformacionDelInicioDeSesion() {
+  @And("usuario llena formulario sign in")
+  public void usuarioLlenaFormularioSignIn() {
     driver.findElement(By.id("email")).sendKeys(usuario);
     driver.findElement(By.id("pass")).sendKeys(contrasenya);
   }
 
-  @And("el usuario le da click al boton de Sign In")
-  public void elUsuarioLeDaClickAlBotonDeSignIn() {
+  @And("usuario clica boton sign in")
+  public void usuarioClicaBotonSignIn() {
     driver.findElement(By.id("send2")).click();
   }
 
-  @Then("el usuario es redirigido a la portada")
-  public void elUsuarioEsRedirigidoALaPortada() {
+  @Then("usuario redirigido portada")
+  public void usuarioRedirigidoPortada() {
     String url = driver.getCurrentUrl();
     System.out.println();
     Assert.assertTrue(url.contains("https://magento.softwaretestingboard.com/"));
   }
 
   //Cerrar Sesion
-  @When("el usuario hace click en su nombre y en Sign Out")
-  public void elUsuarioHaceClickEnSuNombreYEnSignOut() {
+  @When("usuario clica sign out")
+  public void usuarioClicaSignOut() {
     driver.findElement(By.className("customer-welcome")).click();
     driver.findElement(By.className("authorization-link")).click();
   }
 
-  @Then("el usuario cierra la sesion")
-  public void elUsuarioCierraLaSesion() {
+  @Then("usuario cierra sesion")
+  public void usuarioCierraSesion() {
     String h1Title = driver.findElement(By.className("base")).getText();
     Assert.assertTrue(h1Title.contains("You are signed out"));
   }
 
-  @When("pasan cinco segundos")
-  public void pasanCincoSegundos() throws InterruptedException {
+  @When("espera cinco segundos")
+  public void esperaCincoSegundos() throws InterruptedException {
     Thread.sleep(5100);
   }
 
 
-  @Then("el usuario es redirigido a la portada otra vez")
-  public void elUsuarioEsRedirigidoALaPortadaOtraVez() {
+  @Then("usuario redirigido portada again")
+  public void usuarioRedirigidoPortadaAgain() {
     String url = driver.getCurrentUrl();
     System.out.println();
     Assert.assertTrue(url.contains("https://magento.softwaretestingboard.com/"));

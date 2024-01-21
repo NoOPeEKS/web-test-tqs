@@ -1,19 +1,19 @@
 Feature: Register
 
-  Scenario: Registrarse Con Correo Existente
+  Scenario: Registrarse con correo existente
 
-    Given el usuario esta en la portada
-    When el usuario hace click en Create an Account
-    And el usuario rellena la informacion con un email repetido
-    And el usuario le da click al boton de Create an Account
-    Then aparece error de mail existente en la pagina de Registro
+    Given usuario en portada
+    When usuario click Create an Account
+    And usuario llena formulario email repetido
+    And usuario click boton create an account
+    Then error mail existente
 
   Scenario Outline: Password incorrecta
 
-    Given el usuario esta en la portada
-    When el usuario hace click en Create an Account
-    And el usuario añade una <passwd>
-    Then aparece el mensaje de error <error>
+    Given usuario en portada
+    When usuario click Create an Account
+    And usuario añade <passwd>
+    Then mensaje error <error>
 
     Examples:
       |passwd     |  error  |
@@ -23,13 +23,13 @@ Feature: Register
 
   Scenario Outline: Password no confirmada
 
-    Given el usuario esta en la portada
-    When el usuario hace click en Create an Account
-    And el usuario rellena la informacion sin la passwd
-    And el usuario añade una <passwd>
-    And el usuario confirma su <passwdConf>
-    And el usuario le da click al boton de Create an Account
-    Then se muestra el mensaje de <error>
+    Given usuario en portada
+    When usuario click Create an Account
+    And usuario llena formulario sin passwd
+    And usuario añade <passwd>
+    And usuario confirma <passwdConf>
+    And usuario click boton create an account
+    Then mostrar mensaje <error>
 
     Examples:
       | passwd | passwdConf |  error  |
@@ -42,9 +42,9 @@ Feature: Register
 
   Scenario: Registrarse Sin Errores
 
-    Given el usuario esta en la portada
-    When el usuario hace click en Create an Account
-    And el usuario rellena la informacion con un email nuevo
-    And el usuario le da click al boton de Create an Account
-    Then aparece la pagina de My Account
+    Given usuario en portada
+    When usuario click Create an Account
+    And usuario llena formulario email nuevo
+    And usuario click boton create an account
+    Then usuario redirigido My Account
 
